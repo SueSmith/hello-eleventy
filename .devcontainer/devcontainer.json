@@ -18,7 +18,7 @@
     },
     "updateContentCommand": "npm install",
     "postCreateCommand": "eleventy --serve",
-    "postAttachCommand": "npx @fastly/compute-js-static-publish@latest --root-dir=./build --kv-store-name=blog-content && cd compute-js && npm install && npm run dev:publish && npm run dev:start", 
+    "postAttachCommand": "if [ ! -d './compute-js' ]; then npx @fastly/compute-js-static-publish@latest --root-dir=./build --kv-store-name=blog-content; fi && cd compute-js && npm install && npm run dev:publish && npx --yes @fastly/cli compute serve --watch", 
     "waitFor": "postCreateCommand",
     "customizations": {
         "vscode": {
@@ -29,12 +29,12 @@
             ],
             "settings": {
                 "files.exclude": {
-      					"package-lock.json": true,
-			      		".gitignore": true,
-					      "node_modules/": true
-				    },
-				    "editor.minimap.enabled": false,
-				    "editor.defaultFormatter": "esbenp.prettier-vscode",
+      			"package-lock.json": true,
+			".gitignore": true,
+			"node_modules/": true
+		},
+		"editor.minimap.enabled": false,
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
                 "actionButtons": {
                     "commands": [
                         {
@@ -52,14 +52,14 @@
                         {
                             "name": "🚀 Deploy",
                             "singleInstance": true,
-                            "command": "npm run build && if [ ! -d './edge' ]; then npx --yes @fastly/compute-js-static-publish@latest --root-dir=./dist --output=./edge; fi && cd ./edge && npm install && npx --yes @fastly/cli compute publish --service-name=$CODESPACE_NAME --accept-defaults --auto-yes || echo 'Grab an API key and add it your repo before deploying!'"
+                            "command": "if [ ! $FASTLY_API_TOKEN ]; then echo 'Grab an API key and add it your repo before deploying!'; else npm run fastly:deploy && npm run fastly:publish  --service-name=$CODESPACE_NAME --accept-defaults --auto-yes || echo 'Oops! Something went wrong. 😭'; fi"
                         },
-            						{
-						              	"name": "🔎 Split",
-							              "singleInstance": true,
-							              "useVsCodeApi": true,
-							              "command": "workbench.action.moveEditorToNextGroup"
-						            }
+            		{
+				"name": "🔎 Split",
+				"singleInstance": true,
+				"useVsCodeApi": true,
+				"command": "workbench.action.moveEditorToNextGroup"
+			}
                     ],
                     "defaultColor": "none"
                 }
