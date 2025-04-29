@@ -1,0 +1,12 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+	"portsAttributes": {
+		"8080": {
+			"label": "Blog",
+			"onAutoForward": "openPreview"
+		}
+	},
+	"updateContentCommand": "npm install",
+	"postAttachCommand": "npm run start",
+	"waitFor": "updateContentCommand"
+}
