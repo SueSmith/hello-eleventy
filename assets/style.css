@@ -131,7 +131,6 @@ p, ul {
 }
 
 header {
-  font-family: Menlo, Consolas, Monaco, "Lucida Console", monospace;
   text-align: left;
   margin-bottom: 1rem;
   background-color: var(--color-header);
