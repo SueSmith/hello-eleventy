@@ -5,65 +5,73 @@
 // "GitHub.vscode-github-actions",
 // "blackgirlbytes.deploy-to-github-pages",
 {
-    "name": "Ubuntu",
-    "image": "mcr.microsoft.com/devcontainers/base:noble",
-    "features": {
-        "ghcr.io/devcontainers/features/node:1": {}
+  "name": "Ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/base:noble",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "portsAttributes": {
+    "7676": {
+      "label": "Compute",
+      "onAutoForward": "openPreview"
     },
-    "portsAttributes": {
-        "7676": {
-            "label": "Compute",
-            "onAutoForward": "openPreview"
-        }
-    },
-    "updateContentCommand": "npm install",
-    "postCreateCommand": "eleventy --serve",
-    "postAttachCommand": "if [ ! -d './compute-js' ]; then npx @fastly/compute-js-static-publish@latest --root-dir=./build --kv-store-name=blog-content; fi && cd compute-js && npm install && npm run dev:publish && npx --yes @fastly/cli compute serve --watch", 
-    "waitFor": "postCreateCommand",
-    "customizations": {
-        "vscode": {
-            "extensions": [
-                "jkearins.action-buttons-ext@0.1.1",
-                "esbenp.prettier-vscode",
-                "dbaeumer.vscode-eslint"
-            ],
-            "settings": {
-                "files.exclude": {
-      			"package-lock.json": true,
-			".gitignore": true,
-			"node_modules/": true
-		},
-		"editor.minimap.enabled": false,
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-                "actionButtons": {
-                    "commands": [
-                        {
-                            "name": "🪄 Prettify",
-                            "singleInstance": true,
-                            "useVsCodeApi": true,
-                            "command": "editor.action.formatDocument"
-                        },
-                        {
-                            "name": "💻 Terminal",
-                            "singleInstance": true,
-                            "useVsCodeApi": true,
-                            "command": "workbench.action.terminal.toggleTerminal"
-                        },
-                        {
-                            "name": "🚀 Deploy",
-                            "singleInstance": true,
-                            "command": "if [ ! $FASTLY_API_TOKEN ]; then echo 'Grab an API key and add it your repo before deploying!'; else npm run fastly:deploy && npm run fastly:publish  --service-name=$CODESPACE_NAME --accept-defaults --auto-yes || echo 'Oops! Something went wrong. 😭'; fi"
-                        },
-            		{
-				"name": "🔎 Split",
-				"singleInstance": true,
-				"useVsCodeApi": true,
-				"command": "workbench.action.moveEditorToNextGroup"
-			}
-                    ],
-                    "defaultColor": "none"
-                }
-            }
-        }
+    "8080": {
+      "label": "Eleventy",
+      "onAutoForward": "openPreview"
     }
+  },
+  "updateContentCommand": "npm install",
+  "postAttachCommand": "npm run start",
+  "waitFor": "updateContentCommand",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "jkearins.action-buttons-ext@0.1.1",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "files.exclude": {
+          "package-lock.json": true,
+          ".gitignore": true,
+          "node_modules/": true
+        },
+        "editor.minimap.enabled": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "actionButtons": {
+          "commands": [
+            {
+              "name": "🌈 Prettify",
+              "singleInstance": true,
+              "useVsCodeApi": true,
+              "command": "editor.action.formatDocument",
+              "tooltip": "Tidy up your code"
+            },
+            {
+              "name": "💻 Terminal",
+              "singleInstance": true,
+              "useVsCodeApi": true,
+              "command": "workbench.action.terminal.toggleTerminal",
+              "tooltip": "Open a terminal"
+            },
+            {
+              "name": "🔎 Split",
+              "singleInstance": true,
+              "useVsCodeApi": true,
+              "command": "workbench.action.moveEditorToNextGroup",
+              "tooltip": "Move your active tab to the side"
+            },
+            {
+              "name": "🚀 Publish",
+              "singleInstance": true,
+              "command": "bash publish.sh",
+              "tooltip": "Publish your site and content to Fastly Compute"
+            }
+          ],
+          "defaultColor": "none",
+          "reloadButton": null
+        }
+      }
+    }
+  }
 }
