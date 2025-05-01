@@ -82,8 +82,8 @@ When you're ready to publish your staging changes, promote the collection:
 
 This project uses the <a href="https://github.com/fastly/compute-js-static-publish" target="_blank">Fastly JavaScript Static Publisher</a> to turn your blog into a serverless application that runs at the network edge, near your users. 
 
-* The 11ty framework builds your posts into the HTML and other files that make up your website and places them in the `build` folder.
-* The Static Publisher uses those files to scaffold a Compute app that compiles into Webassembly (Wasm) to run fast and securely on the Fastly network – you'll find the Compute code in `compute-js` after you deploy.
+* The 11ty framework builds your posts into the HTML and other files that make up your website and places them in the `_site` folder.
+* The Static Publisher uses those files to scaffold a Compute app that compiles into Webassembly (Wasm) to run fast and securely on the Fastly network – you'll find the Compute code in `_app` after you deploy.
 * We deploy the app to Fastly, creating a service and uploading the Wasm to it.
 * We then publish your content to a KV Store – a key-value store that also runs on Fastly and that your app can talk to.
 
