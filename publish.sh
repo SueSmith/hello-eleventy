@@ -9,7 +9,7 @@ if [ "$answer" != "${answer#[Yy]}" ] ; then
         echo '⚠️ Grab an API key and add it your repo before deploying! Check out the README for steps. 📖' 
     else 
         if [ ! -d './_app' ]; then
-            npx --yes @fastly/compute-js-static-publish@latest --root-dir=./site --output=./app
+            npx --yes @fastly/compute-js-static-publish@latest --root-dir=./_site --output=./_app
         fi
         cd _app
         name=$(grep '^service_id' fastly.toml | cut -d= -f2-)
