@@ -14,9 +14,10 @@ In this guide we'll show you how to deploy your blog to <a href="https://www.fas
 
 **Fork** your own copy of [this repo](https://github.com/glitchdotcom/fastly-hello-eleventy), click **Code** > **Codespaces** and create a new Codespace to edit the project.
 
-Give the Codespace a minute or two to start up – it'll automatically build and run your new website, opening a preview to see your site update as you edit! When your website preview opens, click the **🔎 Split** button at the bottom so that you can see the site side by side with your code.
+Give the Codespace a minute or two to start up – it'll automatically build and run your new website, opening a preview to see your site update as you edit! 
 
-_You can close [x] the **Terminal** while you work._
+* When your website preview opens, click the **🔎 Split** button at the bottom so that you can see the site side by side with your code.
+* _You can close [x] the **Terminal** while you work._
 
 ## Get to know your blog
 
@@ -89,7 +90,7 @@ This project uses the <a href="https://github.com/fastly/compute-js-static-publi
 
 Your app only needs deployed to Fastly once, after that we just update the new content to your KV Store and your Compute app will pull your posts from there.
 
-⚙️ The settings we use to create the guided experience in Codespaces are in the `devcontainer/` folder.
+⚙️ The settings we use to create the guided experience in Codespaces are in the `.devcontainer/` folder.
 
 🧰 You'll find the Fastly CLI commands we use under the hood in the `publish.sh` script.
 
