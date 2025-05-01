@@ -1,55 +1,112 @@
-# Hello Eleventy!
+# Hello 11ty!
 
-This project is a blog powered by [Eleventy](https://www.11ty.dev/), a lightweight static site generator. That means you get all the power of a server-side framework but it builds plain HTML files for fast loading by your visitors. This project includes some default posts and layouts you can use as a foundation, and you can customize how your site builds in the JavaScript code. 📚
+Oh hi! Welcome to your new blog. 🎡
 
-_While you're working on the content in the editor your changes will happen ✨ immediately in the preview window. As you code the site is serving files from a local build directory. When you close the editor your site will run a `build` script then serve the output as a fast and always-on static site._
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/SueSmith/hello-eleventy)
 
-_Last updated: 14 August 2023_
+**You can publish this site to Fastly for free!**
 
-## Prerequisites
+This project is a blog powered by [Eleventy](https://www.11ty.dev/), a lightweight static site generator that builds plain HTML files for quick loading by your visitors.
 
-You'll get best use out of this project if you're familiar with basic HTML and JavaScript. This is a static site, which means the server builds it using the content of the `src` folder, then is able to serve it to your users quickly. The posts are in Markdown, which is similar to HTML (markup) but with a lot less syntax!
+In this guide we'll show you how to deploy your blog to <a href="https://www.fastly.com/products/edge-compute" target="_blank">Fastly Compute</a> for super fast performance – your great posts will immediately be available for everyone, everywhere all at once. You can alternatively deploy your blog to other platforms, like <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>. 
 
-## What's in this project?
+## Remix your own blog
 
-← `README.md`: That’s this file, where you can tell people what your cool website does and how you built it.
+**Fork** your own copy of [this repo](https://github.com/glitchdotcom/fastly-hello-eleventy), click **Code** > **Codespaces** and create a new Codespace to edit the project.
 
-← `public/style.css`: The styling rules for your pages and posts.
+Give the Codespace a minute or two to start up – it'll automatically build and run your new website, opening a preview to see your site update as you edit! When your website preview opens, click the **🔎 Split** button at the bottom so that you can see the site side by side with your code.
 
-← `.eleventy.js`: Here you can configure how Eleventy builds your content into the site. Read through the initial blog posts in the site for steps on extending this code.
+_You can close [x] the **Terminal** while you work._
 
-← `package.json`: Your project's dependencies, where you will also find the start command to run eleventy. 
+## Get to know your blog
 
-← `src/`: This folder contains all the files Eleventy will use to build your site.
+You can make edits in the files by opening them from the left sidebar. Your blog preview will update as you edit!
 
-### Working in the `src/` folder 📁
+📝 Edit the post content and add new posts in `src/posts`.
 
-← `index.md`, `posts.md`, `about.md`: These Markdown files include the content for your Home, Posts, and About pages.
+💡 Change your site HTML in the `src/_includes/layouts` files.
 
-← `posts/`: These are the Markdown files for the posts that make up your blog–you can add new posts here and remove any you don't want. Each one includes front matter that Eleventy uses to build the content into the site, passing the data into the template referenced as `layout` at the top of the file.
+🎨 Change your site style rules in `public/style.css`.
 
-← `_includes/layouts/`: This is where all of your page level layouts go. The **\_** tells you that this is an _eleventy only_ folder. Each layout uses [Nunjucks](https://mozilla.github.io/nunjucks/templating.html) to build the page or post data into an HTML page. There is one base layout that all others extend.
+🖼️ Add images in the `public/` folder.
 
-← `seo.json`: When you're ready to share your new site or add a custom domain, change SEO/meta settings in here.
+ℹ️ Edit the metadata for your site in the `data/` folder.
 
-___Want a basic template version of this project to build your own Eleventy app? Check out [Minimal Eleventy](https://glitch.com/edit/#!/remix/11ty)!___
+> Share your draft site with collaborators by opening **💻 Terminal** > **PORTS**.
+>
+> Change `private` to `public` by right clicking your running port, then copy the URL 📋.
 
-## Try this next 🏗️
+## Deploy your blog to Fastly Compute
 
-With the site preview open on the right and the Glitch editor open on the left, navigate through the initial blog posts to learn more and carry out some development on your Eleventy site!
+Ready to share your site with the world? Deploy it to Fastly to make it available for everyone everywhere all at once!
 
-Your site can use incremental builds, so if for example you only change a markdown file, Glitch would just rewrite the relevant page instead of rebuilding the whole site–to enable this, change your `package.json` `start` command to `eleventy --incremental --serve`. 
+Grab a Fastly API key from your account and add it to your GitHub repo:
 
-_When you add or delete a file and your preview does not update straight away on refresh, you can enter `eleventy --serve` in your project terminal to force a rewrite._
+- Sign up for a <strong><a href="https://www.fastly.com/signup/" target="_blank">free Fastly developer account</a></strong>
+- Grab an **API Token** from **Account** > **Personal Profile** > **API Tokens** > **Create Token**
+  - _Type_: Automation
+  - _Role_: Engineer
+  - _Scope_: Global (deselect the _Read-only access_ box)
+  - _Access_: All services
+  - _Expiration_: Never expire
+- **Copy the token value into your GitHub repo**
+  - Open **Settings** > **Secrets and Variables** > **Codespaces**
+  - Create a **New repository secret**
+  - Enter the name `FASTLY_API_TOKEN`
+  - Paste your token value in and save
 
-Check out `TODO.md` for some more optional next steps.
+Back in your Codespace, you should see a prompt to reload for the new environment variable so go ahead and click that.
 
-![Glitch](https://cdn.glitch.com/a9975ea6-8949-4bab-addb-8a95021dc2da%2FLogo_Color.svg?v=1602781328576)
+Hit the **🚀 Publish** button and watch the Terminal output for your new site address!
 
-## You built this with Glitch!
+Open it in a new tab and tell everyone you know. 📣
 
-[Glitch](https://glitch.com) is a friendly community where millions of people come together to build web apps and websites.
+🎢 Whenever you update your content, like adding a new blog post, hit the **🚀 Publish** button again to publish to Fastly!
 
-- Want more details about Eleventy on Glitch? We've got a [Help Center article](https://help.glitch.com/hc/en-us/articles/16287563161229-Eleventy-Projects) just for that.
-- Need more help? [Check out our Help Center](https://help.glitch.com/) for answers to any common questions.
-- Ready to make it official? [Become a paid Glitch member](https://glitch.com/pricing) to boost your app with private sharing, more storage and memory, domains and more.
+### Stage before publishing
+
+You can publish staging versions of your site and content to Fastly if you want to check and share links before publishing:
+
+* Open the **💻 Terminal** and enter `cd _app`
+* Publish your current content to a staging collection:
+  * `npx --yes @fastly/compute-js-static-publish publish-content --collection-name=staging --expires-in=7d`
+  * Your staging preview will be available at `staging-` followed by your `*.edgecompute.app` domain.
+
+When you're ready to publish your staging changes, promote the collection:
+
+* `npx --yes @fastly/compute-js-static-publish collections promote --collection-name=staging --to=live`
+
+## How this project works 🧐
+
+This project uses the <a href="https://github.com/fastly/compute-js-static-publish" target="_blank">Fastly JavaScript Static Publisher</a> to turn your blog into a serverless application that runs at the network edge, near your users. 
+
+* The 11ty framework builds your posts into the HTML and other files that make up your website and places them in the `build` folder.
+* The Static Publisher uses those files to scaffold a Compute app that compiles into Webassembly (Wasm) to run fast and securely on the Fastly network – you'll find the Compute code in `compute-js` after you deploy.
+* We deploy the app to Fastly, creating a service and uploading the Wasm to it.
+* We then publish your content to a KV Store – a key-value store that also runs on Fastly and that your app can talk to.
+
+Your app only needs deployed to Fastly once, after that we just update the new content to your KV Store and your Compute app will pull your posts from there.
+
+⚙️ The settings we use to create the guided experience in Codespaces are in the `devcontainer/` folder.
+
+🧰 You'll find the Fastly CLI commands we use under the hood in the `publish.sh` script.
+
+## Extensions
+
+This project uses the following extensions from the dev community! 🙌
+
+* [VSCode Action Buttons Ext](https://marketplace.visualstudio.com/items?itemName=jkearins.action-buttons-ext)
+* [Prettier Code Formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
+## Keep going! 🛸
+
+💥 You can change the Compute logic for your app in `_app/src/index.js`. 
+
+Check out lots more tips on using the <a href="https://github.com/fastly/compute-js-static-publish" target="_blank">Static Publisher</a> in its repo `README`.
+
+Don't stop there, <a href="https://www.fastly.com/documentation/solutions/tutorials/deliver-your-site/#sending-domain-traffic-to-fastly" target="_blank">add a domain to your new site</a>.
+
+🛟 Get help on the <a href="https://community.fastly.com" target="_blank">community forum</a>.
+
+<img src="https://github.com/user-attachments/assets/17a8af4a-100f-416d-a1cf-f84174262138" width="100px"/>
