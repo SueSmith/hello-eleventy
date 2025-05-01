@@ -22,15 +22,17 @@ _You can close [x] the **Terminal** while you work._
 
 You can make edits in the files by opening them from the left sidebar. Your blog preview will update as you edit!
 
-📝 Edit the post content and add new posts in `src/posts`.
+The files you'll want to edit are mostly in the `source` and `public` directories:
 
-💡 Change your site HTML in the `src/_includes/layouts` files.
+📝 Edit the post content and add new posts in `source/posts`.
+
+💡 Change your site HTML in the `source/_layouts` files.
+
+ℹ️ Edit the metadata for your site in the `source/_data` folder.
 
 🎨 Change your site style rules in `public/style.css`.
 
 🖼️ Add images in the `public/` folder.
-
-ℹ️ Edit the metadata for your site in the `data/` folder.
 
 > Share your draft site with collaborators by opening **💻 Terminal** > **PORTS**.
 >
