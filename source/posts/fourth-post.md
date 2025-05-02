@@ -8,3 +8,5 @@ layout: post.njk
 ---
 
 Hi yes this is a post
+
+![Keyboard cat](/assets/keyboardcat.jpg)
