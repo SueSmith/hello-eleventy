@@ -18,7 +18,10 @@
     }
   },
   "updateContentCommand": "npm install",
-  "postAttachCommand": "npm run start",
+  "postAttachCommand": {
+    "inform": "bash helpers/welcome.sh",
+    "build": "npm run start"
+  },
   "waitFor": "updateContentCommand",
   "customizations": {
     "vscode": {
@@ -61,8 +64,8 @@
             {
               "name": "🚀 Publish",
               "singleInstance": true,
-              "command": "bash publish.sh",
-              "tooltip": "Publish your site and content to Fastly Compute"
+              "command": "bash helpers/publish.sh",
+              "tooltip": "Publish your content to Fastly Compute"
             }
           ],
           "defaultColor": "none",
