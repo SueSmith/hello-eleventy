@@ -62,6 +62,12 @@
               "tooltip": "Move your active tab to the side"
             },
             {
+              "name": "🔗 Share",
+              "singleInstance": true,
+              "command": "bash helpers/share.sh",
+              "tooltip": "Grab a link to share your draft site"
+            },
+            {
               "name": "🚀 Publish",
               "singleInstance": true,
               "command": "bash helpers/publish.sh",
